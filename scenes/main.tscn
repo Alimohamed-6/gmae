@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://bm6naeyasi036"]
+
+[ext_resource type="PackedScene" uid="uid://bo5x1scwwkccv" path="res://player/character_body_2d.tscn" id="1_o5qli"]
+[ext_resource type="PackedScene" uid="uid://dysb7ia0svj0j" path="res://slime/slime.tscn" id="2_0wfyh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sgp6g"]
+size = Vector2(3206, 43)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o5qli"]
+size = Vector2(185, 36)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="platform_1" type="StaticBody2D" parent="."]
+collision_layer = 2
+
+[node name="ColorRect" type="ColorRect" parent="platform_1"]
+offset_left = -1.0
+offset_top = 450.0
+offset_right = 3206.0
+offset_bottom = 493.0
+color = Color(0.637214, 0.350535, 0.134009, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platform_1"]
+position = Vector2(1603, 471.5)
+shape = SubResource("RectangleShape2D_sgp6g")
+
+[node name="player" parent="." instance=ExtResource("1_o5qli")]
+position = Vector2(371, 386)
+collision_mask = 6
+
+[node name="platform_2" type="StaticBody2D" parent="."]
+collision_layer = 4
+
+[node name="ColorRect" type="ColorRect" parent="platform_2"]
+offset_left = 823.0
+offset_top = 367.0
+offset_right = 1008.0
+offset_bottom = 403.0
+color = Color(0.0767935, 0.624182, 0.528505, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platform_2"]
+position = Vector2(915.5, 385)
+shape = SubResource("RectangleShape2D_o5qli")
+one_way_collision = true
+
+[node name="slime" parent="." instance=ExtResource("2_0wfyh")]
+position = Vector2(861, 433)
+collision_layer = 8
+collision_mask = 7
